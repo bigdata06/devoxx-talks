@@ -1,2 +1,15 @@
 # Devoxx Talks
+
 A REST client build with Feign to call http://cfp.devoxx.fr/api
+
+== Output example
+
+....
+wednesday|09:30|12:30|University|Java, JVM, Javas SE/EE|Préparez-vous à la modularité selon Java 9|Alexis Hassler, Remi Forax
+wednesday|09:30|12:30|University|Java, JVM, Javas SE/EE|Maîtrisez les super pouvoirs de Spring Boot|Brian Clozel, Stéphane Nicoll
+wednesday|09:30|12:30|University|Big Data, Machine Learning, IA & Analytics|Université de la datascience|Youen Chéné, Fabien Vauchelles, Romain Picot-Clémente, Sébastien Collet
+wednesday|09:30|12:30|University|DevOps, Agilité, Méthodologie & Tests|Linux est ton meilleur ami|Pierre-Antoine Grégoire, Olivier Robert, Nicolas Helleringer
+wednesday|09:30|12:30|University|Cloud, Container et Scalabilité|Orchestration de conteneurs : le choix des armes !|Jonathan Raffre, Jean-Louis Rigau, Thomas Auffredou, Yannick lorenzati
+wednesday|09:30|12:30|University|Architecture, Performance et Securité|CQRS/ES from scratch|Emilien Pecoul, Florent Pellet
+wednesday|09:30|12:30|University|Java, JVM, Javas SE/EE|Applications réactives avec Eclipse Vert.x|Julien Ponge, Julien Viet
+....
