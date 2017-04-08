@@ -1,0 +1,7 @@
+---
+fr.devoxx.api.url: http://cfp.devoxx.fr/api
+spring.jmx.enable: false
+
+logging.level:
+  org.springframework: OFF
+  com.netflix: OFF
