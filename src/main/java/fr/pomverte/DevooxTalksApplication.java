@@ -3,7 +3,6 @@ package fr.pomverte;
 import fr.pomverte.model.Slot;
 import fr.pomverte.model.Slots;
 import fr.pomverte.model.Speaker;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,7 +27,6 @@ class DevooxToolsCommandLine implements CommandLineRunner {
 
     private final DevooxTalksRestClient devooxTalksRestClient;
 
-    @Autowired
     DevooxToolsCommandLine(DevooxTalksRestClient devooxTalksRestClient) {
         this.devooxTalksRestClient = devooxTalksRestClient;
     }
