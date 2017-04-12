@@ -1,6 +1,10 @@
-# Devoxx Talks
+= Devoxx Talks
 
 A REST client build with Feign to call http://cfp.devoxx.fr/api
+
+== Command line
+
+ gradlew bootRun
 
 == Output example
 
