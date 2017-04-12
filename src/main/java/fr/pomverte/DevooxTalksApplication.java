@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -17,34 +18,22 @@ import java.util.stream.Collectors;
 @EnableFeignClients
 @SpringBootApplication
 public class DevooxTalksApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(DevooxTalksApplication.class, args);
-    }
-}
 
-@Component
-class DevooxToolsCommandLine implements CommandLineRunner {
+    @Bean
+    CommandLineRunner devooxToolsCommandLine(DevooxTalksRestClient devooxTalksRestClient) {
+        return args -> {
+            List<Slot> slots = new ArrayList<>();
 
-    private final DevooxTalksRestClient devooxTalksRestClient;
+            ResponseEntity<Slots> responseEntity = devooxTalksRestClient.getSlotsByDay("wednesday");
+            slots.addAll(responseEntity.getBody().getSlots());
 
-    DevooxToolsCommandLine(DevooxTalksRestClient devooxTalksRestClient) {
-        this.devooxTalksRestClient = devooxTalksRestClient;
-    }
+            responseEntity = devooxTalksRestClient.getSlotsByDay("thursday");
+            slots.addAll(responseEntity.getBody().getSlots());
 
-    @Override
-    public void run(String... strings) throws Exception {
-        List<Slot> slots = new ArrayList<>();
+            responseEntity = devooxTalksRestClient.getSlotsByDay("friday");
+            slots.addAll(responseEntity.getBody().getSlots());
 
-        ResponseEntity<Slots> responseEntity = this.devooxTalksRestClient.getSlotsByDay("wednesday");
-        slots.addAll(responseEntity.getBody().getSlots());
-
-        responseEntity = this.devooxTalksRestClient.getSlotsByDay("thursday");
-        slots.addAll(responseEntity.getBody().getSlots());
-
-        responseEntity = this.devooxTalksRestClient.getSlotsByDay("friday");
-        slots.addAll(responseEntity.getBody().getSlots());
-
-        slots.stream()
+            slots.stream()
                 .filter(s -> s.getTalk() != null)
                 .forEach(slot -> {
 
@@ -63,5 +52,10 @@ class DevooxToolsCommandLine implements CommandLineRunner {
                             ));
                         }
                 );
+		};
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(DevooxTalksApplication.class, args);
     }
 }
