@@ -9,11 +9,11 @@ image_resource:
 
 inputs:
 - name: devoxx-talks-src
+
 run:
   path: sh
+  dir: devoxx-talks-src
   args:
   - -exc
   - |
-    cd devoxx-talks-src
     gradle --stacktrace build
- 
