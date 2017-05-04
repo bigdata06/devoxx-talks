@@ -12,5 +12,5 @@ jobs:
     plan:
       - get: devoxx-talks-src
         trigger: true
-      - task: devoxx-talks-gradlew
+      - task: devoxx-talks-gradle
         file: devoxx-talks-src/ci/task-gradle.yml

@@ -5,11 +5,15 @@ image_resource:
   type: docker-image
   source:
     repository: gradle
-    tag: '3.5-jre8'
+    tag: '3.4.1-jdk8'
 
 inputs:
 - name: devoxx-talks-src
-
 run:
-  path: ./devoxx-talks-src/gradle
-  args: ['build']
+  path: sh
+  args:
+  - -exc
+  - |
+    cd devoxx-talks-src
+    gradle build
+ 
