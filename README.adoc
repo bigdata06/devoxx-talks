@@ -17,3 +17,11 @@ wednesday|09:30|12:30|University|Cloud, Container et Scalabilité|Orchestration 
 wednesday|09:30|12:30|University|Architecture, Performance et Securité|CQRS/ES from scratch|Emilien Pecoul, Florent Pellet
 wednesday|09:30|12:30|University|Java, JVM, Javas SE/EE|Applications réactives avec Eclipse Vert.x|Julien Ponge, Julien Viet
 ....
+
+== Concourse
+
+----
+$ fly -t ci set-pipeline -p devoxx-talks -c ci/pipeline.yml
+$ fly -t ci unpause-pipeline -p devoxx-talks
+$ fly -t ci destroy-pipeline -p devoxx-talks
+----
