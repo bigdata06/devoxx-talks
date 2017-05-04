@@ -15,5 +15,5 @@ run:
   - -exc
   - |
     cd devoxx-talks-src
-    gradle build
+    gradle --stacktrace build
  
