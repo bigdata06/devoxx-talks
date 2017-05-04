@@ -1,0 +1,16 @@
+---
+resources:
+  - name: devoxx-talks-src
+    type: git
+    check_every: 1m
+    source:
+      uri: https://github.com/pomverte/devoxx-talks
+      branch: concourse-ci
+
+jobs:
+  - name: devoxx-talks-build
+    plan:
+      - get: devoxx-talks-src
+        trigger: true
+      - task: devoxx-talks-gradlew
+        file: devoxx-talks-src/ci/build-artifact.sh
