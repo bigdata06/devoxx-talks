@@ -13,4 +13,4 @@ jobs:
       - get: devoxx-talks-src
         trigger: true
       - task: devoxx-talks-gradlew
-        file: devoxx-talks-src/ci/build-artifact.sh
+        file: devoxx-talks-src/ci/task-gradle.yml
