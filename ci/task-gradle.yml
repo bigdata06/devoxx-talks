@@ -4,11 +4,12 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: alpine
-    tag: '3.5'
+    repository: gradle
+    tag: '3.5-jre8'
 
 inputs:
 - name: devoxx-talks-src
 
 run:
-  path: ./devoxx-talks-src/gradlew build
+  path: ./devoxx-talks-src/gradle
+  args: ['build']
