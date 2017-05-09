@@ -132,3 +132,95 @@ BUILD FAILED
 
 Total time: 8.819 secs
 ----
+
+=== Hijack
+----
+$ fly -t ci hijack -j devoxx-talks/devoxx-talks-build
+1: build #15, step: devoxx-talks-gradle, type: get
+2: build #15, step: devoxx-talks-gradle, type: task
+3: build #15, step: devoxx-talks-src, type: get
+choose a container: 2
+2
+gradle@35e6a538-daf2-4f59-5145-d217e00603d7:/tmp/build/76b9d33d$ cd devoxx-talks-src
+gradle@35e6a538-daf2-4f59-5145-d217e00603d7:/tmp/build/76b9d33d/devoxx-talks-src$ gradle --stacktrace build
+gradle --stacktrace build
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Failed to create parent directory '/tmp/build/76b9d33d/devoxx-talks-src/.gradle' when creating directory '/tmp/build/76b9d33d/devoxx-talks-src/.gradle/buildOutputCleanup'
+
+* Try:
+Run with --info or --debug option to get more log output.
+
+* Exception is:
+org.gradle.api.UncheckedIOException: Failed to create parent directory '/tmp/build/76b9d33d/devoxx-talks-src/.gradle' when creating directory '/tmp/build/76b9d33d/devoxx-talks-src/.gradle/buildOutputCleanup'
+        at org.gradle.util.GFileUtils.mkdirs(GFileUtils.java:313)
+        at org.gradle.cache.internal.DefaultPersistentDirectoryStore.open(DefaultPersistentDirectoryStore.java:52)
+        at org.gradle.cache.internal.DefaultPersistentDirectoryStore.open(DefaultPersistentDirectoryStore.java:30)
+        at org.gradle.cache.internal.DefaultCacheFactory.doOpen(DefaultCacheFactory.java:89)
+        at org.gradle.cache.internal.DefaultCacheFactory.open(DefaultCacheFactory.java:63)
+        at org.gradle.cache.internal.DefaultCacheRepository$PersistentCacheBuilder.open(DefaultCacheRepository.java:116)
+        at org.gradle.internal.cleanup.DefaultBuildOutputCleanupCache.createCache(DefaultBuildOutputCleanupCache.java:73)
+        at org.gradle.internal.cleanup.DefaultBuildOutputCleanupCache.cleanIfStale(DefaultBuildOutputCleanupCache.java:52)
+        at org.gradle.internal.cleanup.BuildOutputCleanupListener.onConfigure(BuildOutputCleanupListener.java:26)
+        at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+        at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+        at org.gradle.internal.event.DefaultListenerManager$ListenerDetails.dispatch(DefaultListenerManager.java:249)
+        at org.gradle.internal.event.DefaultListenerManager$ListenerDetails.dispatch(DefaultListenerManager.java:229)
+        at org.gradle.internal.event.AbstractBroadcastDispatch.dispatch(AbstractBroadcastDispatch.java:44)
+        at org.gradle.internal.event.DefaultListenerManager$EventBroadcast$ListenerDispatch.dispatch(DefaultListenerManager.java:221)
+        at org.gradle.internal.event.DefaultListenerManager$EventBroadcast$ListenerDispatch.dispatch(DefaultListenerManager.java:209)
+        at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+        at com.sun.proxy.$Proxy16.onConfigure(Unknown Source)
+        at org.gradle.initialization.DefaultGradleLauncher$ConfigureBuildAction.execute(DefaultGradleLauncher.java:239)
+        at org.gradle.initialization.DefaultGradleLauncher$ConfigureBuildAction.execute(DefaultGradleLauncher.java:230)
+        at org.gradle.internal.Transformers$4.transform(Transformers.java:169)
+        at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:106)
+        at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:56)
+        at org.gradle.initialization.DefaultGradleLauncher.doBuildStages(DefaultGradleLauncher.java:160)
+        at org.gradle.initialization.DefaultGradleLauncher.doBuild(DefaultGradleLauncher.java:119)
+        at org.gradle.initialization.DefaultGradleLauncher.run(DefaultGradleLauncher.java:102)
+        at org.gradle.launcher.exec.GradleBuildController.run(GradleBuildController.java:71)
+        at org.gradle.tooling.internal.provider.ExecuteBuildActionRunner.run(ExecuteBuildActionRunner.java:28)
+        at org.gradle.launcher.exec.ChainingBuildActionRunner.run(ChainingBuildActionRunner.java:35)
+        at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:41)
+        at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:26)
+        at org.gradle.tooling.internal.provider.ContinuousBuildActionExecuter.execute(ContinuousBuildActionExecuter.java:75)
+        at org.gradle.tooling.internal.provider.ContinuousBuildActionExecuter.execute(ContinuousBuildActionExecuter.java:49)
+        at org.gradle.tooling.internal.provider.ServicesSetupBuildActionExecuter.execute(ServicesSetupBuildActionExecuter.java:49)
+        at org.gradle.tooling.internal.provider.ServicesSetupBuildActionExecuter.execute(ServicesSetupBuildActionExecuter.java:31)
+        at org.gradle.launcher.daemon.server.exec.ExecuteBuild.doBuild(ExecuteBuild.java:67)
+        at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+        at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+        at org.gradle.launcher.daemon.server.exec.WatchForDisconnection.execute(WatchForDisconnection.java:47)
+        at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+        at org.gradle.launcher.daemon.server.exec.ResetDeprecationLogger.execute(ResetDeprecationLogger.java:26)
+        at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+        at org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon.execute(RequestStopIfSingleUsedDaemon.java:34)
+        at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+        at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.call(ForwardClientInput.java:74)
+        at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.call(ForwardClientInput.java:72)
+        at org.gradle.util.Swapper.swap(Swapper.java:38)
+        at org.gradle.launcher.daemon.server.exec.ForwardClientInput.execute(ForwardClientInput.java:72)
+        at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+        at org.gradle.launcher.daemon.server.exec.LogAndCheckHealth.execute(LogAndCheckHealth.java:55)
+        at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+        at org.gradle.launcher.daemon.server.exec.LogToClient.doBuild(LogToClient.java:60)
+        at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+        at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+        at org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment.doBuild(EstablishBuildEnvironment.java:72)
+        at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:36)
+        at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:120)
+        at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy$1.run(StartBuildOrRespondWithBusy.java:50)
+        at org.gradle.launcher.daemon.server.DaemonStateCoordinator$1.run(DaemonStateCoordinator.java:297)
+        at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+        at org.gradle.internal.concurrent.StoppableExecutorImpl$1.run(StoppableExecutorImpl.java:46)
+
+
+BUILD FAILED
+
+Total time: 0.706 secs
+$ adle@35e6a538-daf2-4f59-5145-d217e00603d7:/tmp/build/76b9d33d/devoxx-talks-src$
+----
+
