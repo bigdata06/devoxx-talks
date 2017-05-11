@@ -24,6 +24,7 @@ wednesday|09:30|12:30|University|Java, JVM, Javas SE/EE|Applications réactives 
 $ fly -t ci set-pipeline -p devoxx-talks -c ci/pipeline.yml
 $ fly -t ci unpause-pipeline -p devoxx-talks
 $ fly -t ci destroy-pipeline -p devoxx-talks
+$ fly -t ci trigger-job -j devoxx-talks/devoxx-talks-build
 ----
 
 ----
