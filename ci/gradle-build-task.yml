@@ -4,8 +4,8 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: gradle
-    tag: '3.4.1-jdk8'
+    repository: alpine
+    tag: '3.5'
 
 inputs:
 - name: devoxx-talks-src
@@ -16,4 +16,5 @@ run:
   args:
   - -exc
   - |
-    gradle --stacktrace build
+    chmod 755 gradlew
+    ./gradlew --stacktrace build
