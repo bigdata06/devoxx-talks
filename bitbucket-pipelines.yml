@@ -4,6 +4,8 @@ pipelines:
   default:
   - step:
       script:
+      - export ARCHIVE_NAME="$(gradle -q archiveName)"
+      - echo "Archive name '$ARCHIVE_NAME'"
       - gradle build
       - ls -lR build/libs
-      - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"build/libs/devoxx-talks-0.0.1-SNAPSHOT.jar"
+      - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"build/libs/${ARCHIVE_NAME}"
