@@ -1,9 +1,9 @@
-#image: java:8-jdk-alpine
-image: java:8
+---
+image: gradle:3.4-jdk8-alpine
 pipelines:
   default:
   - step:
       script:
-      - bash ./gradlew build
-      - ls -lR
+      - gradle build
+      - ls -lR build/libs
       - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"build/libs/devoxx-talks-0.0.1-SNAPSHOT.jar"
