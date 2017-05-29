@@ -1,5 +1,5 @@
 ---
-image: gradle:3.4-jdk8-alpine
+image: gradle:3.4-jdk8
 pipelines:
   default:
   - step:
